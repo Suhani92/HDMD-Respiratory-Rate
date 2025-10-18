@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Hankel Dynamic Mode Decomposition for Radar-Based Respiratory Sensing">
+  <meta name="keywords" content="HDMD, Respiratory Monitoring, Radar, DMD">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HDMD: Radar-Based Respiratory Sensing</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Hankel Dynamic Mode Decomposition for Radar-Based Respiratory Sensing and Tracking</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="mailto:mgopalkrishna0007@gmail.com">M Gopal Krishna</a><sup>*1</sup>,</span>
+            <span class="author-block">
+              <a href="mailto:suhani1077@gmail.com">Suhani Grover</a><sup>*1</sup>,</span>
+            <span class="author-block">
+              <a href="mailto:chhavi.dhiman@dtu.ac.in">Chhavi Dhiman</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Delhi Technological University</span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>*</sup>Equal Contribution</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/your-paper.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/your-paper"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/yourusername/HDMD-Respiratory-Rate"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://forms.gle/your-form-link"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Dataset Request</span>
+                  </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/pipeline.png" alt="HDMD Pipeline">
+      <h2 class="subtitle has-text-centered">
+        <b>HDMD Pipeline:</b> Our framework combines variation trend phase extraction with Hankel-embedded 
+        Dynamic Mode Decomposition for robust respiratory monitoring in challenging environments.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Non-contact respiratory monitoring in uncontrolled environments is a critical unmet need 
+            for applications ranging from remote healthcare to search and rescue. While low-power radar 
+            is a promising sensing modality, its effectiveness is severely limited by environmental 
+            clutter and signal non-stationarity, which cause traditional signal processing pipelines to fail.
+          </p>
+          <p>
+            We present a novel framework for respiratory sensing and tracking that overcomes these 
+            limitations by leveraging <b>Hankel Dynamic Mode Decomposition (HDMD)</b> with temporal tracking. 
+            Our approach treats the noisy time-series data as the output of a dynamical system and 
+            decomposes it into a set of coherent oscillatory modes, enabling the robust isolation of 
+            the respiratory signal without requiring extensive hyperparameter tuning.
+          </p>
+          <p>
+            We evaluate our method on a dataset of <b>24 subjects</b> recorded with a compact pulsed radar 
+            in diverse indoor and outdoor conditions. The proposed HDMD pipeline significantly outperforms 
+            established decomposition baselines, achieving an <b>NRMSE of 6.00% indoors and 1.33% outdoors</b>, 
+            substantially reducing the Root Mean Square Error (RMSE) compared to next-best methods.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Key Results</h2>
+        
+        <!-- Performance Comparison -->
+        <h3 class="title is-4">Performance Comparison</h3>
+        <div class="content">
+          <img src="./static/images/results_table.png" alt="Results">
+          <p>
+            HDMD achieves superior performance across all test conditions, with particularly 
+            strong results in outdoor environments where traditional methods struggle.
+          </p>
+        </div>
+
+        <!-- DMD-t Tracking -->
+        <h3 class="title is-4">Real-Time Tracking with DMD-t</h3>
+        <div class="content">
+          <img src="./static/images/tracking_results.png" alt="Tracking">
+          <p>
+            Our DMD-based tracking (DMD-t) provides superior time-frequency resolution compared 
+            to STFT, enabling accurate respiratory rate variability analysis.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Continue with more sections... -->
+
+</body>
+</html>
