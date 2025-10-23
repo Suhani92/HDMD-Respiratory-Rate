@@ -148,13 +148,19 @@ Navigate to the **Stream** tab and select **Sparse IQ** service. Configure the f
 ## Code Structure
 ```
 HDMD-Respiratory-Rate/
-├── Variation_Trend_Phase_Extraction.py    # Phase signal extraction from radar data
-├── phase-allalgos.py                      # Single file decomposition (all methods)
-├── phase-allalgosICU-loop.py             # Batch processing for indoor dataset
-├── phase-allalgos-outdoor-loop.py        # Batch processing for outdoor dataset
-├── phase-allalgos-lens-loop.py           # Lens configuration comparison
-├── DMDtracking_synthetic_signal.py       # DMD-t tracking demonstration
-└── README.md                              # This file
+├── core_hdmd/
+│   ├── hdmd_breathing_estimation.py     # Main HDMD algorithm for breathing rate estimation from radar IQ data
+│   ├── dmdt_tracking.py                 # Time-varying (DMD-t) tracking of respiratory rate; supports synthetic or real radar data
+│   └── synthetic_signal_generation.py   # Generates synthetic mixed breathing + cardiac signals for testing and visualization
+│
+├── baselines/
+│   ├── eemd_breathing_estimation.py     # Ensemble Empirical Mode Decomposition baseline
+│   ├── vmd_breathing_estimation.py      # Variational Mode Decomposition baseline
+│   └── dwt_breathing_estimation.py      # Discrete Wavelet Transform baseline
+│
+├── data/                                # (optional) Folder for radar .h5 files or synthetic signals
+├── assets/images/                       # Figures for documentation
+└── README.md
 ```
 
 ### Code Descriptions
