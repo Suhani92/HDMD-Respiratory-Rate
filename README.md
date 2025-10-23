@@ -39,7 +39,6 @@ Our dataset contains recordings from 24 subjects across:
 **To access the dataset:**
 1. Fill out the [data request form](https://forms.gle/6PBNuKAtrfQfkXsC8)
 2. Download from the provided Google Drive link
-3. Extract files to the `data/` directory
 
 ---
 
@@ -164,87 +163,129 @@ HDMD-Respiratory-Rate/
 ```
 
 ### Code Descriptions
+---
 
-#### 1. `Variation_Trend_Phase_Extraction.py`
-Extracts continuous phase signal from raw radar IQ data using the variation trend method. This approach avoids phase unwrapping artifacts by computing cumulative displacement over time.
+## Quick Start
 
-**Key functions:**
-- Loads radar data from `.h5` files
-- Performs range bin selection and temporal filtering
-- Extracts continuous phase using complex conjugation
-- Resamples to desired frequency (default: 300 Hz)
-
-**Usage:**
+### 1. Generate Synthetic Signal (Optional)
 ```bash
-python Variation_Trend_Phase_Extraction.py
+python hdmd_core/synthetic_signal_generation.py
+```
+Creates `synthetic_signal.npz` with breathing + cardiac components.
+
+### 2. Run HDMD on Single Radar File
+```bash
+python hdmd_core/hdmd_breathing_estimation.py --file data/subject1.h5
 ```
 
-Edit the `file_path` variable to point to your radar data file.
-
-#### 2. `phase-allalgos.py`
-Comprehensive comparison of HDMD against baseline methods (EEMD, VMD, DWT) for a single data file. Generates reconstructed respiratory waveforms and breathing rate estimates.
-
-**Methods implemented:**
-- Hankel Dynamic Mode Decomposition (HDMD)
-- Ensemble Empirical Mode Decomposition (EEMD)
-- Variational Mode Decomposition (VMD)
-- Discrete Wavelet Transform (DWT)
-
-**Usage:**
+### 3. Process Multiple Files
 ```bash
-python phase-allalgos.py
+python hdmd_core/hdmd_breathing_estimation.py --folder data/ --output results.csv
 ```
 
-Outputs 5 comparison plots showing original signal and reconstructions from each method.
-
-#### 3. `phase-allalgosICU-loop.py`
-Batch processing script for indoor dataset. Processes all files (i1.h5 to i24.h5) and generates CSV with breathing rate estimates and computational times.
-
-**Usage:**
+### 4. Run DMD-t Tracking
 ```bash
-python phase-allalgosICU-loop.py
+# On synthetic signal
+python hdmd_core/dmdt_tracking.py --mode synthetic --data_path synthetic_signal.npz
+
+# On radar data
+python hdmd_core/dmdt_tracking.py --mode radar --data_path data/subject1.npy --fs 300
 ```
 
-**Outputs:**
-- `breathing_rates_results.csv`: Contains BPM estimates and processing times for all methods
-- Console output with per-file results and summary statistics
-
-#### 4. `phase-allalgos-outdoor-loop.py`
-Batch processing script for outdoor dataset. Similar to indoor processing but optimized for outdoor signal characteristics.
-
-**Usage:**
+### 5. Compare with Baseline Methods
 ```bash
-python phase-allalgos-outdoor-loop.py
+# EEMD
+python baselines/eemd_breathing_estimation.py --file data/subject1.h5
+
+# VMD
+python baselines/vmd_breathing_estimation.py --file data/subject1.h5
+
+# DWT
+python baselines/dwt_breathing_estimation.py --file data/subject1.h5
 ```
-
-Update `folder_path` variable to point to your outdoor data directory.
-
-#### 5. `phase-allalgos-lens-loop.py`
-Compares respiratory rate estimation across three antenna configurations:
-- No lens
-- Plano-convex lens
-- Fresnel Zone Plate lens
-
-**Usage:**
-```bash
-python phase-allalgos-lens-loop.py
-```
-
-Generates comparative analysis showing how antenna configuration affects signal quality and estimation accuracy.
-
-#### 6. `DMDtracking_synthetic_signal.py`
-Demonstrates DMD-t tracking on synthetic respiratory signal with time-varying breathing rates. Creates side-by-side comparison with STFT spectrogram.
-
-**Usage:**
-```bash
-python DMDtracking_synthetic_signal.py
-```
-
-**Outputs:**
-- `dmd_spectrogram.svg`: DMD-t tracking vs STFT comparison
-- `signal.svg`: Synthetic signal with rate transitions
 
 ---
+
+## Detailed Usage
+
+### HDMD Breathing Estimation
+
+**Basic usage:**
+```bash
+python hdmd_core/hdmd_breathing_estimation.py --file data/subject1.h5
+```
+
+**Batch processing:**
+```bash
+python hdmd_core/hdmd_breathing_estimation.py --folder data/ --output hdmd_results.csv
+```
+
+**Options:**
+- `--file`: Path to single .h5 file
+- `--folder`: Process all .h5 files in folder
+- `--synthetic`: Use synthetic .npz signal
+- `--output`: Output CSV filename (default: hdmd_results.csv)
+- `--fs`: Sampling frequency in Hz (default: 300)
+- `--m`: Hankel window size (default: 500)
+
+**Output:** CSV file with columns: `file`, `hdmd_bpm`, `hdmd_time`
+
+---
+
+### DMD-t Tracking
+
+**Synthetic signal:**
+```bash
+python hdmd_core/dmdt_tracking.py --mode synthetic --window_size 5.0 --step_size 1.0
+```
+
+**Radar data:**
+```bash
+python hdmd_core/dmdt_tracking.py --mode radar --data_path data/phase_signal.npy --fs 300
+```
+
+**Options:**
+- `--mode`: 'synthetic' or 'radar'
+- `--data_path`: Path to signal file (.npz, .npy, .csv, .mat)
+- `--fs`: Sampling frequency (Hz)
+- `--window_size`: Sliding window size in seconds (default: 5.0)
+- `--step_size`: Step between windows in seconds (default: 1.0)
+- `--rank`: Optional truncation rank for DMD
+- `--save_dir`: Output directory (default: results/)
+
+**Output:** 
+- `dmdt_time_points.npy`: Time centers of each window
+- `dmdt_bpm.npy`: Estimated breathing rate at each time point
+- `dmdt_tracking.png`: Visualization plot
+
+---
+
+### Baseline Methods
+
+All baseline scripts support the same basic interface:
+
+```bash
+python baselines/{method}_breathing_estimation.py --file data/subject1.h5 --fs 300
+```
+
+Replace `{method}` with `eemd`, `vmd`, or `dwt`.
+
+**Method-specific options:**
+
+**EEMD:**
+- `--noise`: Noise width (default: 0.2)
+- `--trials`: Number of ensemble trials (default: 100)
+
+**VMD:**
+- `--K`: Number of modes (default: 6)
+- `--alpha`: Balancing parameter (default: 2000)
+
+**DWT:**
+- `--wavelet`: Wavelet type (default: 'db4')
+- `--max_level`: Max decomposition level (default: 4)
+
+---
+
 
 ## Method Overview
 
