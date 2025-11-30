@@ -16,7 +16,7 @@ Official implementation of **"Hankel Dynamic Mode Decomposition for Radar-Based 
 
 This repository provides a robust framework for contactless respiratory monitoring using low-power mmWave radar and Hankel Dynamic Mode Decomposition (HDMD). Our method achieves **6.00% NRMSE indoors** and **1.33% NRMSE outdoors**, significantly outperforming baseline methods (VMD, EEMD, DWT) while maintaining robustness under random body movements.
 
-![Alt text](assets/images/flowchart.jpg)
+![Alt text](static/images/flowchart.jpg)
 *Figure 1: Overview of the HDMD pipeline for respiratory sensing. The system processes raw radar IQ data through phase extraction, Hankel embedding, DMD decomposition, and respiratory mode reconstruction.*
 
 ### Key Features
@@ -158,7 +158,7 @@ HDMD-Respiratory-Rate/
 │   └── dwt_breathing_estimation.py      # Discrete Wavelet Transform baseline
 │
 ├── data/                                # (optional) Folder for radar .h5 files or synthetic signals
-├── assets/images/                       # Figures for documentation
+├── static/images/                       # Figures for documentation
 └── README.md
 ```
 
@@ -307,7 +307,7 @@ where `α_φ` acts as a high-pass filter to suppress low-frequency drift.
 
 ### DMD-t Tracking
 
-![Alt text](assets/images/dmdt.jpg)
+![Alt text](static/images/dmdt.jpg)
 *Figure 3: DMD-t provides superior time-frequency resolution compared to STFT, enabling accurate tracking of respiratory rate variations.*
 
 Sliding window DMD enables real-time tracking of time-varying respiratory rates. Each window produces local eigenvalues representing instantaneous breathing frequency.
