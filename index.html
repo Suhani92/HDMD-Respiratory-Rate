@@ -3,38 +3,43 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Hankel Dynamic Mode Decomposition for Radar-Based Respiratory Sensing and Tracking.">
-  <meta name="keywords" content="HDMD, Radar, Respiratory, Vital Signs, NeurIPS">
+        content="Hankel Dynamic Mode Decomposition for Radar-Based Respiratory Sensing and Tracking (NeurIPS 2025).">
+  <meta name="keywords" content="HDMD, Radar, Respiratory Sensing, Vital Signs, NeurIPS, Dynamic Mode Decomposition">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>HDMD: Radar-Based Respiratory Sensing</title>
 
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
-
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
-    /* Custom adjustments for the template */
-    .publication-title { font-family: 'Google Sans', sans-serif; }
-    .footer { padding: 3rem 1.5rem 3rem; background-color: #f5f5f5; }
-    .hero-body { padding-bottom: 2rem; }
-    .publication-banner { max-height: 400px; width: auto; display: block; margin: 0 auto; }
-    .results-table td, .results-table th { text-align: center; vertical-align: middle; }
-    .teaser-gif { width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    body { font-family: 'Noto Sans', sans-serif; }
+    .publication-title { font-family: 'Google Sans', sans-serif; font-weight: 700; }
+    .footer { padding: 3rem 1.5rem; background-color: #f5f5f5; }
+    .hero-body { padding-bottom: 3rem; }
+    
+    /* Make images look nice */
+    .result-image { 
+      border-radius: 10px; 
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1); 
+      margin-bottom: 1.5rem;
+    }
+    
+    /* Table Styling */
+    .results-table {
+      margin: 2rem auto;
+      width: 80%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .results-table th { background-color: #3273dc; color: white; text-align: center; }
+    .results-table td { text-align: center; padding: 12px; border-bottom: 1px solid #eee; }
+    .best-row { background-color: #eef6fc; font-weight: bold; }
   </style>
 </head>
 <body>
@@ -44,49 +49,53 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Hankel Dynamic Mode Decomposition for <br>Radar-Based Respiratory Sensing</h1>
+          <h1 class="title is-1 publication-title">
+            Hankel Dynamic Mode Decomposition for <br>Radar-Based Respiratory Sensing and Tracking
+          </h1>
+          <h3 class="subtitle is-4" style="color: #4a4a4a; margin-top: 10px;">
+            NeurIPS 2025 Workshop on Learning to Sense (L2S)
+          </h3>
+          
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="#">M Gopal Krishna</a><sup>*</sup>,</span>
             <span class="author-block">
               <a href="#">Suhani Grover</a><sup>*</sup>,</span>
             <span class="author-block">
-              <a href="https://www.dtu.ac.in/">Chhavi Dhiman</a>
+              <a href="#">Chhavi Dhiman</a>
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
             <span class="author-block">Delhi Technological University</span>
           </div>
-          
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>*</sup>Equal Contribution</span>
+          </div>
+
           <div class="column has-text-centered">
             <div class="publication-links">
               <span class="link-block">
-                <a href="paper.pdf"
+                <a href="https://openreview.net/pdf?id=woYUswZOhF"
                    class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
                   <span>Paper</span>
                 </a>
               </span>
               <span class="link-block">
                 <a href="https://github.com/Suhani92/HDMD-Respiratory-Rate"
                    class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
+                  <span class="icon"><i class="fab fa-github"></i></span>
                   <span>Code</span>
-                  </a>
+                </a>
               </span>
               <span class="link-block">
                 <a href="https://forms.gle/6PBNuKAtrfQfkXsC8"
                    class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
+                  <span class="icon"><i class="far fa-images"></i></span>
                   <span>Dataset</span>
-                  </a>
+                </a>
+              </span>
             </div>
           </div>
         </div>
@@ -97,14 +106,13 @@
 
 <section class="hero teaser">
   <div class="container is-max-desktop">
-    <div class="hero-body">
-      <img src="static/images/teaser.gif" alt="HDMD Teaser" class="teaser-gif" onerror="this.style.display='none'; document.getElementById('gif-placeholder').style.display='block';">
-      <div id="gif-placeholder" style="display:none; text-align:center; padding:50px; background:#f0f0f0; border-radius:10px;">
-        <p><b>Add 'teaser.gif' to static/images/ folder to see your animation here.</b></p>
-      </div>
+    <div class="hero-body has-text-centered">
+      <img src="static/images/teaser.gif" alt="HDMD Teaser" class="result-image" 
+           onerror="this.style.display='none';">
       
-      <h2 class="subtitle has-text-centered" style="margin-top: 15px;">
-        <span class="dnerf">HDMD</span> robustly isolates respiratory patterns from noisy radar signals, even in outdoor environments with significant motion.
+      <h2 class="subtitle">
+        We introduce <b>HDMD</b>, a robust framework that treats noisy radar signals as a dynamical system, 
+        achieving <b>6.00% NRMSE</b> indoors and <b>1.33%</b> outdoors even under random body movement.
       </h2>
     </div>
   </div>
@@ -117,22 +125,25 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Non-contact respiratory monitoring is critical for burn victims, neonates, and disaster triage. 
-            However, low-power radar sensors often fail in real-world conditions due to environmental noise 
-            and random body movements.
+            Non-contact respiratory monitoring is critical for applications ranging from <b>remote healthcare to search and rescue</b>. 
+            However, low-power radar sensors often fail in real-world conditions due to environmental noise and subject movement.
           </p>
           <p>
-            We propose <b>Hankel Dynamic Mode Decomposition (HDMD)</b>. By treating noisy radar signals as a 
-            dynamical system, we isolate breathing patterns even when the subject is moving or outdoors. 
-            Our method achieves <b>6.00% NRMSE indoors</b> and <b>1.33% outdoors</b>, significantly 
-            outperforming traditional methods like VMD and EEMD.
+            We present a novel framework for respiratory sensing that overcomes these limitations by leveraging 
+            <b>Hankel Dynamic Mode Decomposition (HDMD)</b> with temporal tracking. By embedding the 1D radar phase signal 
+            into a high-dimensional Hankel matrix, we can approximate the underlying <b>Koopman operator</b>. 
+            This allows us to decompose the signal into coherent oscillatory modes, effectively isolating the breathing 
+            signal from noise without extensive hyperparameter tuning.
+          </p>
+          <p>
+            Validated on a dataset of 24 subjects, our method significantly outperforms VMD and EEMD baselines, 
+            demonstrating robust performance in both controlled indoor settings and chaotic outdoor environments.
           </p>
         </div>
       </div>
     </div>
   </div>
 </section>
-
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -141,15 +152,19 @@
         <h2 class="title is-3">Methodology</h2>
         <div class="content has-text-justified">
           <p>
-             The HDMD pipeline processes raw radar IQ data through phase extraction, Hankel embedding, 
-             Koopman operator approximation, and respiratory mode reconstruction. This approach avoids 
-             phase unwrapping artifacts common in standard techniques.
+            The HDMD pipeline consists of four key stages:
+            1. <b>Phase Extraction:</b> We use a variation trend method to extract continuous phase without unwrapping artifacts.
+            2. <b>Hankel Embedding:</b> Time-delay embeddings ($X$ and $Y$) are constructed to capture the system's history.
+            3. <b>Koopman Approximation:</b> We solve for the linear operator $K$ such that $Y \approx KX$.
+            4. <b>Mode Reconstruction:</b> Eigen-decomposition isolates the respiratory mode (0.1–0.8 Hz) for reconstruction.
           </p>
         </div>
+        
         <figure class="image">
-            <img src="static/images/flowchart.jpg" alt="HDMD Pipeline Flowchart" style="border-radius: 10px;">
-            <figcaption style="margin-top: 10px; color: gray;">Figure 1: The HDMD Signal Processing Pipeline</figcaption>
+          <img src="static/images/flowchart.jpg" alt="HDMD Architecture" class="result-image">
+          <figcaption>Figure 1: The HDMD Signal Processing Pipeline. From raw IQ data to respiratory waveform reconstruction.</figcaption>
         </figure>
+
       </div>
     </div>
   </div>
@@ -157,37 +172,37 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Results & Tracking</h2>
+    <h2 class="title is-3 has-text-centered">Experimental Results</h2>
 
     <div class="columns is-centered">
-      <div class="column">
-        <div class="content">
-          <h3 class="title is-4">DMD-t Tracking</h3>
-          <p>
-            Unlike STFT spectrograms which blur during movement, our DMD-t approach provides sharp, 
-            time-resolved frequency tracking (blue line) that closely follows the ground truth (green line).
-          </p>
-          <figure class="image">
-            <img src="static/images/dmdt.jpg" alt="DMD-t Tracking Results">
-          </figure>
-        </div>
+      <div class="column is-full-width">
+        <h3 class="title is-4">Robustness to Motion (DMD-t)</h3>
+        <p class="content has-text-justified">
+          Standard methods like STFT (Short-Time Fourier Transform) suffer from "smearing" when the respiratory rate changes quickly. 
+          Our <b>DMD-t (Tracking)</b> method adapts to these changes, providing sharp, instantaneous frequency estimates (blue line) 
+          that match the ground truth (green line) even during random body movements.
+        </p>
+        <figure class="image">
+          <img src="static/images/dmdt.jpg" alt="DMD-t Tracking" class="result-image">
+          <figcaption>Figure 2: Tracking performance comparison. HDMD (left) maintains lock on the breathing rate, while STFT (right) blurs.</figcaption>
+        </figure>
       </div>
     </div>
 
-    <div class="columns is-centered" style="margin-top: 20px;">
+    <div class="columns is-centered">
       <div class="column is-three-quarters">
-        <h3 class="title is-4 has-text-centered">Performance Comparison</h3>
-        <table class="table is-striped is-fullwidth results-table">
+        <h3 class="title is-4 has-text-centered">Quantitative Comparison</h3>
+        <table class="results-table">
           <thead>
             <tr>
               <th>Method</th>
               <th>Indoor Error (BPM)</th>
               <th>Outdoor Error (BPM)</th>
-              <th>Processing Time (s)</th>
+              <th>Speed (s)</th>
             </tr>
           </thead>
           <tbody>
-            <tr style="font-weight: bold; background-color: #eef6fc;">
+            <tr class="best-row">
               <td>HDMD (Ours)</td>
               <td>1.14</td>
               <td>0.40</td>
@@ -209,16 +224,17 @@
               <td>DWT</td>
               <td>9.27</td>
               <td>13.40</td>
-              <td>~0.004s</td>
+              <td>< 0.1s</td>
             </tr>
           </tbody>
         </table>
+        <p class="is-size-7 has-text-centered">
+          <i>Table 1: Root Mean Square Error (RMSE) comparison across 24 subjects.</i>
+        </p>
       </div>
     </div>
-
   </div>
 </section>
-
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
@@ -232,22 +248,12 @@
   </div>
 </section>
 
-
 <footer class="footer">
   <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            Template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
-          </p>
-        </div>
-      </div>
+    <div class="content has-text-centered">
+      <p>
+        Website template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+      </p>
     </div>
   </div>
 </footer>
