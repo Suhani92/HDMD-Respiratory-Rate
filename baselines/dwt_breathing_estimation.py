@@ -25,12 +25,12 @@ def load_and_preprocess(file_path, fs_desired=300, duration_desired=60):
     original_duration = 60.0
     original_fs = num_sweeps / original_duration
 
-    # Range bin selection
+    # Range bin selection 
     mag = np.abs(IQ_data)
     mean_mag = np.mean(mag, axis=2)
     peak_idx = np.argmax(mean_mag, axis=1)
     r0 = max(0, peak_idx[0] - 5)
-    r1 = min(IQ_data.shape[1], peak_idx[0] + 5)
+    r1 = min(IQ_data.shape[1] - 1, peak_idx[0] + 5)  
     sel_bins = np.arange(r0, r1 + 1)
 
     # Low-pass filtering
