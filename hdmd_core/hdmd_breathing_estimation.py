@@ -61,7 +61,6 @@ def diagonal_averaging(H):
     return result
 
 
-
 def preprocess_radar(file_path, fs_desired=300, duration_desired=60):
     """Load radar .h5 file and extract phase signal."""
     with h5py.File(file_path, "r") as f:
@@ -73,11 +72,12 @@ def preprocess_radar(file_path, fs_desired=300, duration_desired=60):
     num_sweeps = IQ_data.shape[2]
     original_fs = num_sweeps / 60.0  # 60s duration
 
-    # Range bin selection
+    # Range bin selection based on magnitude
     magnitude = np.abs(IQ_data)
     mean_mag = np.mean(magnitude, axis=(0, 2))
     peak = np.argmax(mean_mag)
-    r0, r1 = max(0, peak - 5), min(IQ_data.shape[1], peak + 5)
+    r0 = max(0, peak - 5)
+    r1 = min(IQ_data.shape[1] - 1, peak + 5)
     selected = np.arange(r0, r1 + 1)
 
     # Temporal filtering
@@ -143,12 +143,14 @@ def main():
         phi = data["phi"]
         print(f"Processing synthetic data: {args.synthetic}")
         bpm, t_elapsed = estimate_breathing(phi, fs=args.fs, m=args.m)
+        print(f"Synthetic signal: {bpm:.2f} BPM ({t_elapsed:.2f}s)")
         results.append({"file": args.synthetic, "hdmd_bpm": bpm, "hdmd_time": t_elapsed})
 
     elif args.file:
         print(f"Processing radar file: {args.file}")
         phi, fs = preprocess_radar(args.file, fs_desired=args.fs)
         bpm, t_elapsed = estimate_breathing(phi, fs=fs, m=args.m)
+        print(f"{args.file}: {bpm:.2f} BPM ({t_elapsed:.2f}s)")
         results.append({"file": args.file, "hdmd_bpm": bpm, "hdmd_time": t_elapsed})
 
     elif args.folder:
@@ -165,9 +167,9 @@ def main():
                     "hdmd_bpm": bpm,
                     "hdmd_time": t_elapsed
                 })
-                print(f"✓ {fname}: {bpm:.2f} BPM ({t_elapsed:.2f}s)")
+                print(f"{fname}: {bpm:.2f} BPM ({t_elapsed:.2f}s)")
             except Exception as e:
-                print(f"✗ Error in {fname}: {e}")
+                print(f"Error in {fname}: {e}")
                 results.append({"file": fname, "error": str(e)})
 
     else:
@@ -177,7 +179,7 @@ def main():
     if results:
         df = pd.DataFrame(results)
         df.to_csv(args.output, index=False)
-        print(f"\nAll results saved to {args.output}")
+        # print(f"\nAll results saved to {args.output}")
 
 
 if __name__ == "__main__":
