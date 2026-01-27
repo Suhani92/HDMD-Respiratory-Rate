@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Hankel Dynamic Mode Decomposition for Radar-Based Respiratory Sensing and Tracking (NeurIPS 2025).">
-  <meta name="keywords" content="HDMD, Radar, Respiratory Sensing, Vital Signs, NeurIPS, Dynamic Mode Decomposition, DARPA Triage">
+        content="Hankel Dynamic Mode Decomposition for Radar-Based Respiratory Sensing and Tracking (NeurIPS 2025) - Best Poster Award Winner.">
+  <meta name="keywords" content="HDMD, Radar, Respiratory Sensing, Vital Signs, NeurIPS, Dynamic Mode Decomposition, DARPA Triage, Best Poster">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>HDMD: Radar-Based Respiratory Sensing</title>
+  <title>HDMD: Radar-Based Respiratory Sensing - Best Poster Award</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
@@ -19,6 +19,30 @@
     .publication-title { font-family: 'Google Sans', sans-serif; font-weight: 700; }
     .subtitle { font-family: 'Google Sans', sans-serif; color: #4a4a4a; }
     .footer { padding: 3rem 1.5rem; background-color: #f5f5f5; }
+    
+    /* Award Badge Styling */
+    .award-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      color: #1a1a1a;
+      padding: 8px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      font-size: 1rem;
+      margin: 15px 0;
+      box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+      animation: subtle-glow 2s ease-in-out infinite;
+    }
+    
+    @keyframes subtle-glow {
+      0%, 100% { box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4); }
+      50% { box-shadow: 0 4px 16px rgba(255, 215, 0, 0.6); }
+    }
+    
+    .award-icon {
+      margin-right: 8px;
+      font-size: 1.1em;
+    }
     
     /* "Zoomed Out" Image Styling */
     .image-container {
@@ -114,6 +138,11 @@
             NeurIPS 2025 Workshop on Learning to Sense (L2S)
           </h3>
           
+          <!-- Award Badge -->
+          <div class="award-badge">
+            <i class="fas fa-trophy award-icon"></i>Best Poster Award
+          </div>
+          
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="#">M Gopal Krishna</a><sup>*</sup>,</span>
@@ -194,7 +223,8 @@
           </p>
           <p>
             Evaluated on <b>24 subjects</b> in diverse indoor and outdoor conditions, our pipeline significantly 
-            outperforms established decomposition baselines, advancing the feasibility of privacy-preserving physiological sensing.
+            outperforms established decomposition baselines. <b>This work was recognized with the Best Poster Award</b> 
+            at the NeurIPS 2025 Workshop on Learning to Sense, advancing the feasibility of privacy-preserving physiological sensing.
           </p>
         </div>
       </div>
@@ -362,7 +392,8 @@
   author    = {Krishna, M Gopal and Grover, Suhani and Dhiman, Chhavi},
   title     = {Hankel Dynamic Mode Decomposition for Radar-Based Respiratory Sensing and Tracking},
   booktitle = {NeurIPS Workshop on Learning to Sense},
-  year      = {2025}
+  year      = {2025},
+  note      = {Best Poster Award}
 }</code></pre>
   </div>
 </section>
