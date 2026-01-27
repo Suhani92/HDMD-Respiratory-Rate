@@ -2,6 +2,7 @@
 
 [![Paper](https://img.shields.io/badge/Paper-NeurIPS%202025-blue)](https://openreview.net/pdf?id=woYUswZOhF))
 [![Project Page](https://img.shields.io/badge/Project-Page-green)](https://suhani92.github.io/HDMD-Respiratory-Rate/)
+[![Best Poster Award](https://img.shields.io/badge/Award-Best%20Poster-gold)](https://neurips.cc/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Official implementation of **"Hankel Dynamic Mode Decomposition for Radar-Based Respiratory Sensing and Tracking"** accepted at NeurIPS 2025 Workshop on Learning to Sense.
