@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Hankel Dynamic Mode Decomposition for Radar-Based Respiratory Sensing and Tracking (NeurIPS 2025).">
+  <meta name="keywords" content="HDMD, Radar, Respiratory Sensing, Vital Signs, NeurIPS, Dynamic Mode Decomposition, DARPA Triage">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HDMD: Radar-Based Respiratory Sensing</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body { font-family: 'Noto Sans', sans-serif; }
+    .publication-title { font-family: 'Google Sans', sans-serif; font-weight: 700; }
+    .subtitle { font-family: 'Google Sans', sans-serif; color: #4a4a4a; }
+    .footer { padding: 3rem 1.5rem; background-color: #f5f5f5; }
+    
+    /* "Zoomed Out" Image Styling */
+    .image-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .result-image { 
+      border-radius: 8px; 
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1); 
+      width: 85%;            /* Limits width to 85% of container */
+      max-width: 900px;      /* Prevents it from getting too huge on large screens */
+      height: auto;
+      margin: 0 auto;        /* Centers the image */
+      display: block;
+    }
+    
+    /* Logos */
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    .logo-img { max-height: 60px; width: auto; }
+
+    /* Captions */
+    figcaption {
+        font-size: 0.95em;
+        color: #4a4a4a;
+        margin-top: 15px;
+        text-align: center;
+        max-width: 85%;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.5;
+    }
+    
+    /* "Thorough" Academic Table Styling */
+    .table-container {
+        overflow-x: auto;
+        margin: 2rem auto;
+        width: 90%;
+        max-width: 1000px;
+    }
+    .academic-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: 'Castoro', serif; /* Serif font looks more "academic" for tables */
+        font-size: 0.95rem;
+    }
+    .academic-table thead th {
+        background-color: #f5f5f5;
+        color: #333;
+        font-weight: bold;
+        padding: 12px;
+        border-top: 2px solid #333;
+        border-bottom: 2px solid #333;
+        text-align: center;
+    }
+    .academic-table tbody td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        text-align: center;
+    }
+    .academic-table tbody tr:last-of-type td {
+        border-bottom: 2px solid #333; /* Bottom heavy line */
+    }
+    .best-score {
+        font-weight: bold;
+        background-color: #eef6fc; /* Subtle blue highlight for your method */
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          
+          <div class="logo-container">
+            <img src="static/images/image (3).png" alt="DTU" class="logo-img">
+            <img src="static/images/NeurIPS_logo.png" alt="NeurIPS" class="logo-img">
+             <img src="static/images/image (2).png" alt="L2S Workshop" class="logo-img">
+          </div>
+
+          <h1 class="title is-1 publication-title">
+            Hankel Dynamic Mode Decomposition for <br>Radar-Based Respiratory Sensing and Tracking
+          </h1>
+          <h3 class="subtitle is-4">
+            NeurIPS 2025 Workshop on Learning to Sense (L2S)
+          </h3>
+          
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="#">M Gopal Krishna</a><sup>*</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=gh98x-oAAAAJ&hl=en" target="_blank">Suhani Grover</a><sup>*</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=_To7eCUAAAAJ&hl=en" target="_blank">Chhavi Dhiman</a>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Delhi Technological University</span>
+          </div>
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>*</sup>Equal Contribution</span>
+          </div>
+          
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://openreview.net/pdf?id=woYUswZOhF"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/Suhani92/HDMD-Respiratory-Rate"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://forms.gle/6PBNuKAtrfQfkXsC8"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="far fa-images"></i></span>
+                  <span>Dataset</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body has-text-centered">
+      <img src="static/videos/teaser.gif" alt="HDMD Teaser" class="result-image" style="max-width: 600px;"
+           onerror="this.style.display='none';">
+      <h2 class="subtitle" style="margin-top: 20px; max-width: 800px; margin-left: auto; margin-right: auto;">
+        We introduce <b>HDMD</b>, a robust framework that treats noisy radar signals as a dynamical system, 
+        enabling the isolation of respiratory patterns in <b>outdoor environments</b> and during <b>random body movements</b>.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Non-contact respiratory monitoring in uncontrolled environments is a critical unmet need for applications 
+            ranging from <b>remote healthcare to search and rescue</b>. While low-power radar is a promising sensing modality, 
+            its effectiveness is severely limited by environmental clutter and signal non-stationarity.
+          </p>
+          <p>
+            We present a novel framework that overcomes these limitations by leveraging <b>Hankel Dynamic Mode Decomposition (HDMD)</b> 
+            with temporal tracking. Our approach treats the noisy time-series data as the output of a dynamical system, 
+            decomposing it into coherent oscillatory modes. This enables the robust isolation of the respiratory signal 
+            without extensive hyperparameter tuning.
+          </p>
+          <p>
+            Evaluated on <b>24 subjects</b> in diverse indoor and outdoor conditions, our pipeline significantly 
+            outperforms established decomposition baselines, advancing the feasibility of privacy-preserving physiological sensing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Methodology</h2>
+        
+        <div class="image-container">
+          <img src="static/images/flowchart.jpg" alt="HDMD Pipeline" class="result-image">
+          <figcaption>
+            <b>Figure 1: Overview of the HDMD pipeline.</b><br>
+            Steps: (1–2) Target detection and thresholding to form the range–slowtime matrix; 
+            (2.1–2.2) Spatial downsampling and temporal filtering; (3) Continuous phase extraction using variation trend; 
+            (4) Hankel reshaping for time-delay embedding; (5) HDMD decomposition via Koopman operator approximation; 
+            (6) Respiratory reconstruction; and (7) DMD-based motion tracking.
+          </figcaption>
+        </div>
+
+        <div class="content has-text-justified" style="margin-top: 20px;">
+          <p>
+            By constructing a <b>Hankel matrix</b> from time-delayed embeddings, we capture the system's temporal evolution. 
+            The <b>Koopman operator</b> is then approximated to isolate respiratory modes (typically 0.1–0.8 Hz) 
+            from noise and clutter, avoiding the phase unwrapping artifacts common in traditional radar processing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background-color: #fcfcfc;">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Experimental Setup</h2>
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="image-container">
+           <img src="static/images/icu.jpg" alt="Experimental Setup" class="result-image">
+          <figcaption>
+            <b>Figure 3: Data Collection Setup.</b><br>
+            (a) Indoor collection at 1.5m; (b) 2.0m distance; (c) Acconeer XM125 radar with plano-convex lens; 
+            (d) Clinical capnography (Indoor Ground Truth); (e) Pulse oximeter (Outdoor Ground Truth); 
+            (f) Extracted phase signal. We utilize a <b>plano-convex lens</b> to focus the 60.5 GHz beam, 
+            improving SNR by ~53% compared to a bare sensor.
+          </figcaption>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Results & Analysis</h2>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h3 class="title is-4">Motion Robustness (DMD-t)</h3>
+        <p class="content has-text-justified">
+          Standard STFT spectrograms suffer from "smearing" when respiratory rates change rapidly or when the subject moves.
+          Our <b>DMD-t (Tracking)</b> method adapts to these non-stationary signals, providing sharp, instantaneous 
+          frequency estimates (blue line) that closely follow the ground truth (green line), even during <b>Random Body Movements (RBM)</b>.
+        </p>
+        <div class="image-container">
+          <img src="static/images/dmdt.jpg" alt="DMD-t Tracking" class="result-image">
+          <figcaption>
+            <b>Figure 2: DMD-t vs. STFT Tracking.</b> 
+            The DMD-t approach (left) maintains a lock on the breathing rate during motion events where 
+            traditional spectrograms (right) become blurry and uninterpretable.
+          </figcaption>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-12">
+        <h3 class="title is-4 has-text-centered" style="margin-top: 2rem;">Quantitative Comparison</h3>
+        <div class="table-container">
+          <table class="academic-table">
+            <thead>
+              <tr>
+                <th style="text-align: left;">Method</th>
+                <th colspan="2">Indoor Performance</th>
+                <th colspan="2">Outdoor Performance</th>
+                <th>Avg Time (s)</th>
+              </tr>
+              <tr style="font-size: 0.85em; color: #666;">
+                <th></th>
+                <th>RMSE (BPM)</th>
+                <th>NRMSE (%)</th>
+                <th>RMSE (BPM)</th>
+                <th>NRMSE (%)</th>
+                <th>(120s sample)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="best-score">
+                <td style="text-align: left;"><b>HDMD (Ours)</b></td>
+                <td><b>1.14</b></td>
+                <td><b>6.00%</b></td>
+                <td><b>0.40</b></td>
+                <td><b>1.33%</b></td>
+                <td>~5.4s</td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">VMD</td>
+                <td>6.12</td>
+                <td>32.20%</td>
+                <td>8.56</td>
+                <td>28.55%</td>
+                <td>~0.86s</td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">EEMD</td>
+                <td>4.68</td>
+                <td>24.60%</td>
+                <td>3.81</td>
+                <td>12.71%</td>
+                <td>~38.9s</td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">DWT</td>
+                <td>9.27</td>
+                <td>48.80%</td>
+                <td>13.40</td>
+                <td>44.66%</td>
+                <td><b>~0.004s</b></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="is-size-7 has-text-centered">
+          <i>Table 1: Performance benchmarking across 24 subjects. HDMD achieves the lowest error rates in both indoor and outdoor settings.</i>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-centered">
+          <h4 class="title is-5">Project Context</h4>
+          <p>
+            This research was developed as part of <b>Team UAS DTU</b>'s entry for the <b>DARPA Triage Challenge</b>. 
+            The system is designed to provide robust, non-contact vital sign monitoring for autonomous casualty triage in complex, unstructured environments.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{krishna2025hdmd,
+  author    = {Krishna, M Gopal and Grover, Suhani and Dhiman, Chhavi},
+  title     = {Hankel Dynamic Mode Decomposition for Radar-Based Respiratory Sensing and Tracking},
+  booktitle = {NeurIPS Workshop on Learning to Sense},
+  year      = {2025}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        Website template borrowed from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+      </p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
